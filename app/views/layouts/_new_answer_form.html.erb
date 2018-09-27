@@ -1,0 +1,32 @@
+<div class="modal" id="new-anwser-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">New Question</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <%= form_for :question, url: "/answer" do %>
+        <div class="modal-body">
+          <div class="form-group row">
+            <label for="input-email" class="col-sm-2 col-form-label col-form-label-sm">Email address</label>
+            <div class="col-sm-10">
+              <input type="email" name="email" class="form-control" id="input-email" aria-describedby="emailHelp" placeholder="Enter email" required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="input-question" class="col-sm-2 col-form-label">Question</label>
+            <div class="col-sm-10">
+              <textarea class="form-control" name="question" id="input-question" placeholder="What will you like to say" required></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
