@@ -2,23 +2,24 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">New Question</h5>
+        <h5 class="modal-title">Answer</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <%= form_for :question, url: "/answer" do %>
+      <%= form_for :answer, url: "/answers" do %>
+        <input type="hidden" name="answer[question_id]" value="<%= @question.id%>">
         <div class="modal-body">
           <div class="form-group row">
             <label for="input-email" class="col-sm-2 col-form-label col-form-label-sm">Email address</label>
             <div class="col-sm-10">
-              <input type="email" name="email" class="form-control" id="input-email" aria-describedby="emailHelp" placeholder="Enter email" required>
+              <input type="email" name="answer[email]" class="form-control" value="<%= current_user_email %>" id="input-email" aria-describedby="emailHelp" placeholder="Enter email" required>
             </div>
           </div>
           <div class="form-group row">
-            <label for="input-question" class="col-sm-2 col-form-label">Question</label>
+            <label for="input-answer" class="col-sm-2 col-form-label">Answer</label>
             <div class="col-sm-10">
-              <textarea class="form-control" name="question" id="input-question" placeholder="What will you like to say" required></textarea>
+              <textarea class="form-control" name="answer[body]" id="input-answer" placeholder="What will you like to say" required></textarea>
             </div>
           </div>
         </div>
