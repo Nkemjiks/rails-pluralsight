@@ -3,7 +3,6 @@ class AnswersController < ApplicationController
   def create
     question = Question.find(params[:answer][:question_id])
     answer = question.answer.create(answer_params)
-    
     # Deliver email
     MainMailer.notify_question_author(answer).deliver_later
     session[:current_user_email] = answer_params[:email]

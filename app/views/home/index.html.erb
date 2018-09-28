@@ -16,14 +16,14 @@
       <div class="alert alert-info">Nothing here yet. Be the first to ask?</div>
     <% else %>
       <% @questions.each do |q| %>
-        <div class="media">
+        <div class="media media-show" data-target="<%= question_path(q) %>">
           <div class="media-left">
             <img src="<%= q.gravatar %>" class="media-object">
           </div>
           <div class="media-body">
             <h4 class="media-heading"><%= q.email %> asked:</h4>
             <div class="time"><%= time_ago_in_words q.created_at %> ago</div>
-            <p><%= q.body %></p>
+            <p><%= truncate q.body, length: 200, omission: '... (continued)'%></p>
             <a href="<%= question_path(q) %>" class="btn btn-success">View Answer</a>
           </div>
         </div>
