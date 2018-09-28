@@ -1,5 +1,4 @@
 <main role="main">
-
   <section class="jumbotron text-center">
     <div class="container">
       <h1 class="jumbotron-heading">Simple Blog</h1>
@@ -11,33 +10,25 @@
       </p>
     </div>
   </section>
-
-  <div class="album py-5 bg-light m-md">
-    <div class="container">
-      <div class="row">
-        <% @questions.each do |q| %>
-            <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <img class="card-img-top" src="<%= q.gravatar %>">
-                <div class="card-body">
-                  <h4><%= q.email %> asked</h4>
-                  <p><%= time_ago_in_words q.created_at %> ago</p>
-                  <p class="card-text"><%= q.body %></p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <a href="<%= question_path(q) %>" class="btn btn-sm btn-outline-secondary">View</a>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-        <% end %>
-        <% if @questions.empty? %>
-          <div class="alert alert-info">Nothing here yet. Be the first to ask?</div>
-        <% end %>
-      </div>
-    </div>
+  
+  <div class="container home-container">
+    <% if @questions.empty? %>
+      <div class="alert alert-info">Nothing here yet. Be the first to ask?</div>
+    <% else %>
+      <% @questions.each do |q| %>
+        <div class="media">
+          <div class="media-left">
+            <img src="<%= q.gravatar %>" class="media-object">
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading"><%= q.email %> asked:</h4>
+            <div class="time"><%= time_ago_in_words q.created_at %> ago</div>
+            <p><%= q.body %></p>
+            <a href="<%= question_path(q) %>" class="btn btn-success">View Answer</a>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 
 </main>
